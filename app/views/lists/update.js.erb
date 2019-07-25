@@ -1,2 +1,2 @@
-$('#cardlist').html("<%=j render partial: 'lists/lists', locals: {lists: @lists} %>");
+$('[id="list-<%= @list.id %>"]').html("<%=j render partial: 'lists/list', locals: {list: @list} %>");
 $('#listForm').modal('hide');

@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_list
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_item, only: [:show, :edit, :update, :destroy, :soft_destroy]
 
   # GET /tasks
   # GET /tasks.json
@@ -42,7 +42,6 @@ class ItemsController < ApplicationController
   def update
     respond_to do |format|
       if @item.update(item_params)
-        @items = @list.items
         format.js
       else
         format.js { render json: @item.errors }
@@ -53,10 +52,16 @@ class ItemsController < ApplicationController
   # DELETE /tasks/1
   # DELETE /tasks/1.json
   def destroy
-    @item.destroy
+    @item.hard_delete
     respond_to do |format|
-      @items = @list.items
       format.js
+    end
+  end
+
+  def soft_destroy
+    @item.soft_delete
+    respond_to do |format|
+      format.js { render "items/destroy.js.erb" }
     end
   end
 

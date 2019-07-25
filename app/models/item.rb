@@ -1,6 +1,7 @@
 class Item < ApplicationRecord
 
   # == Modules == #
+  include SoftDeleteable
 
   # == Constants == #
 

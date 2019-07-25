@@ -1,5 +1,5 @@
 class ListsController < ApplicationController
-  before_action :set_list, only: [:show, :edit, :update, :destroy]
+  before_action :set_list, only: [:show, :edit, :update, :destroy, :soft_destroy]
 
   # GET /lists
   # GET /lists.json
@@ -51,10 +51,14 @@ class ListsController < ApplicationController
 
 
   def destroy
-    @list.destroy
+    @list.hard_delete
+  end
+
+  def soft_destroy
+    @list.soft_delete
+
     respond_to do |format|
-      @lists = List.all
-      format.js
+      format.js { render "lists/destroy.js.erb" }
     end
   end
 

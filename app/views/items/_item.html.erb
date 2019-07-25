@@ -1,0 +1,22 @@
+<div class="act-time">
+  <div class="activity-body act-in">
+    <div class="text">
+      <p class="attribution">
+          <span class="item-detail" data-url="<%= edit_list_item_path(list, item) %>">
+            <%= item.name %>
+          </span>
+        <%= link_to soft_destroy_list_item_path(list, item), class: 'pull-right', title: 'Soft Delete List Item', 'data-toggle' => 'tooltip', 'data-placement' => 'top',
+                    method: :delete , remote: true, data: { confirm: 'Are you sure?' } do %>
+            <i class="fa fa-trash-o"></i>
+        <% end %>
+        <%= link_to list_item_path(list, item), class: 'pull-right', title: 'Destroy List Item', 'data-toggle' => 'tooltip', 'data-placement' => 'top',
+                    method: :delete , remote: true, data: { confirm: 'Are you sure?' } do %>
+            <i class="fa fa-close red-btn"></i>
+        <% end %>
+        <%= link_to edit_list_item_path(list, item), class: 'pull-right', title: 'Edit List Item', 'data-toggle' => 'tooltip', 'data-placement' => 'top', remote: true do %>
+            <i class="fa fa-pencil-square"></i>
+        <% end %>
+      </p>
+    </div>
+  </div>
+</div>

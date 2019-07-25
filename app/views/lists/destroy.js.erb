@@ -1,2 +1,1 @@
-$('#cardlist').html("<%=j render partial: 'lists/lists', locals: {lists: @lists} %>");
-$('#listForm').modal('hide');
+$('[id="list-<%= @list.id %>"]').remove();

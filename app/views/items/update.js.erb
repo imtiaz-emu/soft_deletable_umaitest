@@ -1,1 +1,2 @@
-$("#list-<%= @list.id %> #list-items").html("<%=j render partial: 'items/items', locals: {items: @items, list: @list} %>");
+$('[id="item-<%= @item.id %>"]').html("<%=j render partial: 'items/item', locals: {list: @list, item: @item} %>");
+$("#item-form").html("<%=j render partial: 'items/form', locals: {item: Item.new, list: @list} %>");

@@ -43,6 +43,10 @@
 }
 .act-time{
     padding: 0px;
+    margin: 5px 0;
+}
+.act-time * {
+    font-size: 14px;
 }
 .attribution a i{
     margin: 0 auto;
