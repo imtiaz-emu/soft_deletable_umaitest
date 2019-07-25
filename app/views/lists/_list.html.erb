@@ -1,0 +1,26 @@
+<div class="col-md-4">
+  <div class="panel">
+    <div class="panel-heading panel-card-completed">
+      <%= list.title %>
+      <%= link_to edit_list_path(list), class: 'pull-right' , remote: true do %>
+          <i class="fa fa-pencil-square"></i>
+      <% end %>
+
+      <%= link_to "javascript:void(0)", class: 'pull-right' do %>
+          <i class="fa fa-trash-o"></i>
+      <% end %>
+
+      <%= link_to list_path(list), class: 'pull-right', method: :delete , remote: true do %>
+          <i class="fa fa-close red-btn"></i>
+      <% end %>
+    </div>
+
+    <div class="panel-content">
+      <%= list.description %>
+      <h5>Items</h5>
+      <div id="list-items">
+        <%= render partial: 'items/items', locals: {items: list.items, list: list} %>
+      </div>
+    </div>
+  </div>
+</div>

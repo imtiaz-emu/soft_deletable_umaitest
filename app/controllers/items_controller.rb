@@ -1,0 +1,77 @@
+class ItemsController < ApplicationController
+  before_action :set_list
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
+
+  # GET /tasks
+  # GET /tasks.json
+  def index
+    @items = Item.all
+  end
+
+  # GET /tasks/1
+  # GET /tasks/1.json
+  def show
+  end
+
+  # GET /tasks/new
+  def new
+    @item = Item.new
+  end
+
+  # GET /tasks/1/edit
+  def edit
+  end
+
+  # POST /tasks
+  # POST /tasks.json
+  def create
+    @item = @list.items.new(item_params)
+
+    respond_to do |format|
+      if @item.save
+        @items = @list.items
+        format.js
+      else
+        format.js { render json: @item.errors }
+      end
+    end
+  end
+
+  # PATCH/PUT /tasks/1
+  # PATCH/PUT /tasks/1.json
+  def update
+    respond_to do |format|
+      if @item.update(item_params)
+        @items = @list.items
+        format.js
+      else
+        format.js { render json: @item.errors }
+      end
+    end
+  end
+
+  # DELETE /tasks/1
+  # DELETE /tasks/1.json
+  def destroy
+    @item.destroy
+    respond_to do |format|
+      @items = @list.items
+      format.js
+    end
+  end
+
+  private
+  # Use callbacks to share common setup or constraints between actions.
+  def set_item
+    @item = Item.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def item_params
+    params.require(:item).permit(:name)
+  end
+
+  def set_list
+    @list = List.find(params[:list_id])
+  end
+end

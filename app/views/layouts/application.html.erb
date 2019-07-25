@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>UmaiTest</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+<section id="container" class="">
+  <section id="main-content">
+    <section class="wrapper">
+      <% flash.each do |key, value| %>
+          <div class="alert alert-<%= key %> alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span></button>
+            <%= value %>
+          </div>
+      <% end %>
+      <%= yield %>
+    </section>
+  </section>
+
+</section>
+</body>
+</html>

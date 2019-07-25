@@ -1,0 +1,25 @@
+<div id="item-form">
+  <%= render partial: 'items/form', locals: {item: Item.new, list: list} %>
+</div>
+<% items.each do |item| %>
+    <div class="act-time">
+      <div class="activity-body act-in">
+        <div class="text">
+          <p class="attribution">
+            <span class="item-detail" data-url="<%= edit_list_item_path(list, item) %>">
+              <%= item.name %>
+            </span>
+            <%= link_to "javascript:void(0)", class: 'pull-right' do %>
+                <i class="fa fa-trash-o"></i>
+            <% end %>
+            <%= link_to list_item_path(list, item), class: 'pull-right', method: :delete , remote: true do %>
+                <i class="fa fa-close red-btn"></i>
+            <% end %>
+            <%= link_to edit_list_item_path(list, item), class: 'pull-right', remote: true do %>
+                <i class="fa fa-pencil-square"></i>
+            <% end %>
+          </p>
+        </div>
+      </div>
+    </div>
+<% end %>

@@ -1,0 +1,6 @@
+<%= form_for([list, item], html: {class: 'form-inline'}, remote: true) do |f| %>
+    <div class="form-group">
+      <%= f.text_field :name, class: 'form-control', placeholder: "Item Detail" %>
+    </div>
+    <button type="submit" class="btn btn-primary btn-sm"><%= item.new_record? ? 'Add' : 'Save' %></button>
+<% end %>

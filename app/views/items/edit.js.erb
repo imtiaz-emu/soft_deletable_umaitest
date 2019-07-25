@@ -1,0 +1,1 @@
+$("#list-<%= @item.list.id %> #item-form").html("<%=j render partial: 'items/form', locals: {item: @item, list: @item.list}  %>");

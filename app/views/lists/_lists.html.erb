@@ -1,0 +1,5 @@
+<% lists.each do |list| %>
+    <div id="list-<%= list.id %>">
+      <%= render partial: 'lists/list', locals: {list: list} %>
+    </div>
+<% end %>
