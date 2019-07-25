@@ -2,13 +2,20 @@
   <div class="panel">
     <div class="panel-heading panel-card-completed">
       <%= list.title %>
-      <%= link_to edit_list_path(list), class: 'pull-right', title: 'Edit List', 'data-toggle' => 'tooltip', 'data-placement' => 'top', remote: true do %>
-          <i class="fa fa-pencil-square"></i>
-      <% end %>
+      <% if trash_controller? %>
+          <%= link_to restore_list_path(list), class: 'pull-right', title: 'Restore List', 'data-toggle' => 'tooltip', 'data-placement' => 'top',
+                      remote: true, method: :patch do %>
+              <i class="fa fa-check"></i>
+          <% end %>
+      <% else %>
+          <%= link_to edit_list_path(list), class: 'pull-right', title: 'Edit List', 'data-toggle' => 'tooltip', 'data-placement' => 'top', remote: true do %>
+              <i class="fa fa-pencil-square"></i>
+          <% end %>
 
-      <%= link_to soft_destroy_list_path(list), class: 'pull-right', title: 'Soft Delete List', 'data-toggle' => 'tooltip', 'data-placement' => 'top',
-                  method: :delete, remote: true, data: { confirm: 'Are you sure?' } do %>
-          <i class="fa fa-trash-o"></i>
+          <%= link_to soft_destroy_list_path(list), class: 'pull-right', title: 'Soft Delete List', 'data-toggle' => 'tooltip', 'data-placement' => 'top',
+                      method: :delete, remote: true, data: { confirm: 'Are you sure?' } do %>
+              <i class="fa fa-trash-o"></i>
+          <% end %>
       <% end %>
 
       <%= link_to list_path(list), class: 'pull-right', title: 'Destroy List', 'data-toggle' => 'tooltip', 'data-placement' => 'top',

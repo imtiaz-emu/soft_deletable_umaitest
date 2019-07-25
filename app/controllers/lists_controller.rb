@@ -1,10 +1,10 @@
 class ListsController < ApplicationController
-  before_action :set_list, only: [:show, :edit, :update, :destroy, :soft_destroy]
+  before_action :set_list, only: [:show, :edit, :update, :destroy, :soft_destroy, :restore]
 
   # GET /lists
   # GET /lists.json
   def index
-    @lists = List.all
+    @lists = List.includes(:items).all
   end
 
   # GET /lists/1
@@ -57,6 +57,13 @@ class ListsController < ApplicationController
   def soft_destroy
     @list.soft_delete
 
+    respond_to do |format|
+      format.js { render "lists/destroy.js.erb" }
+    end
+  end
+
+  def restore
+    @list.restore
     respond_to do |format|
       format.js { render "lists/destroy.js.erb" }
     end

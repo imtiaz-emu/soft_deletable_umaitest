@@ -11,11 +11,7 @@
       </div>
       <div class="col-md-6">
         <div id="trashCorner">
-          <%= link_to "javascript:void(0)", class: 'pull-right' do %>
-              <button type="button" class="btn btn-primary">
-                Trash <span class="badge badge-light">4/2</span>
-              </button>
-          <% end %>
+          <%#= render partial: "trash/trash_link", locals: {lists: @lists.count, items: @items.count} %>
         </div>
       </div>
     </div>
