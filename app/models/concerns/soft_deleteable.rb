@@ -2,8 +2,8 @@ module SoftDeleteable
   extend ActiveSupport::Concern
 
   included do
-    default_scope { where(is_deleted: false) }
-    scope :only_deleted, -> { unscoped.where.not(is_deleted: false) }
+    scope :not_deleted, -> { where(is_deleted: false) }
+    scope :only_deleted, -> { where(is_deleted: true) }
 
     def hard_delete
       delete_or_restore(false, true)

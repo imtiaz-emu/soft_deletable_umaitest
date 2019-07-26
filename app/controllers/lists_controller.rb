@@ -1,5 +1,6 @@
 class ListsController < ApplicationController
-  before_action :set_list, only: [:show, :edit, :update, :destroy, :soft_destroy, :restore]
+  before_action :set_list, only: [:show, :edit, :update, :destroy, :soft_destroy]
+  before_action :set_deleted_list, only: %i[restore]
 
   # GET /lists
   # GET /lists.json
@@ -73,6 +74,10 @@ class ListsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_list
       @list = List.find(params[:id])
+    end
+
+    def set_deleted_list
+      @list = List.only_deleted.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

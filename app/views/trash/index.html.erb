@@ -1,5 +1,28 @@
+<%= link_to 'Back', root_path %>
+<% if @items.count == 0 && @lists.count == 0 %>
+    <h3>Your trash is Empty!</h3>
+<% end %>
 <div class="row">
   <div id="cardlist">
     <%= render partial: 'lists/lists', locals: {lists: @lists} %>
   </div>
 </div>
+
+<% if @items.count > 0 %>
+    <div class="row">
+      <div class="col-md-5">
+        <section class="panel">
+          <header class="panel-heading">
+            Items that are softly deleted but not their associated list
+          </header>
+          <div class="list-group">
+            <% @items.each do |item| %>
+                <div id="item-<%= item.id %>">
+                  <%= render partial: 'items/item', locals: {list: item.list, item: item} %>
+                </div>
+            <% end %>
+          </div>
+        </section>
+      </div>
+    </div>
+<% end %>

@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :set_list
   before_action :set_item, only: [:show, :edit, :update, :destroy, :soft_destroy]
+  before_action :set_deleted_item, only: %i[restore]
 
   # GET /tasks
   # GET /tasks.json
@@ -85,5 +86,9 @@ class ItemsController < ApplicationController
 
   def set_list
     @list = List.find(params[:list_id])
+  end
+
+  def set_deleted_item
+    @item = Item.only_deleted.find(params[:id])
   end
 end

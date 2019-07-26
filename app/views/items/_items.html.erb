@@ -1,8 +1,10 @@
-<div id="item-form">
-  <%= render partial: 'items/form', locals: {item: Item.new, list: list} %>
-</div>
+<% unless trash_controller? %>
+    <div id="item-form">
+      <%= render partial: 'items/form', locals: {item: Item.new, list: list} %>
+    </div>
+<% end %>
 <% items.each do |item| %>
     <div id="item-<%= item.id %>">
-      <%= render partial: 'items/item', locals: {list: list, item: item} %>
+      <%= render partial: 'items/item', locals: {list: item.list, item: item} %>
     </div>
 <% end %>

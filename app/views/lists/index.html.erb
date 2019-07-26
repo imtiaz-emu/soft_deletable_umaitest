@@ -1,20 +1,17 @@
+<div class="row" style="margin-bottom: 10px">
+  <div class="col-md-4">
+    <%= link_to new_list_path, class: 'btn btn-primary', remote: true do %>
+        <i class="fa fa-plus"></i> Add List
+    <% end %>
+    <%= link_to trash_index_path, class: 'btn btn-primary' do %>
+        <i class="fa fa-trash-o"></i> Trash
+    <% end %>
+  </div>
+</div>
+
 <div class="row">
   <div id="cardlist">
     <%= render partial: 'lists/lists', locals: {lists: @lists} %>
-  </div>
-  <div class="col-md-4">
-    <div class="row">
-      <div class="col-md-6">
-        <%= link_to new_list_path, class: 'btn btn-primary', remote: true do %>
-            <i class="fa fa-plus"></i> Add List
-        <% end %>
-      </div>
-      <div class="col-md-6">
-        <div id="trashCorner">
-          <%#= render partial: "trash/trash_link", locals: {lists: @lists.count, items: @items.count} %>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 
