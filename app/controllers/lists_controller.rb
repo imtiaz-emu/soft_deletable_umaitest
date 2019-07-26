@@ -5,7 +5,7 @@ class ListsController < ApplicationController
   # GET /lists
   # GET /lists.json
   def index
-    @lists = List.includes(:items).all
+    @lists = List.includes(:items).not_deleted
   end
 
   # GET /lists/1
@@ -29,7 +29,7 @@ class ListsController < ApplicationController
 
     respond_to do |format|
       if @list.save
-        @lists = List.all
+        @lists = List.not_deleted
         format.js
       else
         format.js { render json: @list.errors}
@@ -42,7 +42,7 @@ class ListsController < ApplicationController
   def update
     respond_to do |format|
       if @list.update(list_params)
-        @lists = List.all
+        @lists = List.not_deleted
         format.js
       else
         format.js { render json: @list.errors }

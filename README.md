@@ -22,3 +22,4 @@
 - Install required gems(libraries) - `bundle install`
 - In your command line run - `rake db:create`  (_It'll create a new database in mysql_)
 - In your command line run - `rake db:migrate`  (_It'll add tables to your  newly created database_)
+- In your command line run - `rspec spec/controllers/`  (_It'll do the controller tests, results can be found inside coverage folder_)

@@ -63,3 +63,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.2'
 gem 'simplecov', require: false, group: :test
 gem 'faker', '~> 1.6', '>= 1.6.6'
+gem 'simplecov', require: false, group: :test

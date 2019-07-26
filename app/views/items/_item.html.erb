@@ -11,9 +11,11 @@
             <i class="fa fa-close red-btn"></i>
         <% end %>
         <% if trash_controller? %>
-            <%= link_to restore_list_item_path(list, item), class: 'pull-right', title: 'Restore List Item', 'data-toggle' => 'tooltip', 'data-placement' => 'top',
-                        method: :patch , remote: true do %>
-                <i class="fa fa-trash-o"></i>
+            <% if item.is_deleted %>
+                <%= link_to restore_list_item_path(list, item), class: 'pull-right', title: 'Restore List Item', 'data-toggle' => 'tooltip', 'data-placement' => 'top',
+                            method: :patch , remote: true do %>
+                    <i class="fa fa-trash-o"></i>
+                <% end %>
             <% end %>
         <% else %>
             <%= link_to edit_list_item_path(list, item), class: 'pull-right', title: 'Edit List Item', 'data-toggle' => 'tooltip', 'data-placement' => 'top', remote: true do %>
