@@ -5,3 +5,20 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+require 'faker'
+
+
+2.times do
+  list = List.create!(
+      {
+          title: Faker::Lorem.sentence,
+          description: Faker::Movie.quote,
+          is_deleted: false
+      }
+  )
+  2.times { list.items.create!({
+                                   name: Faker::JapaneseMedia::OnePiece.character,
+                                   is_deleted: false
+                               }) }
+end
